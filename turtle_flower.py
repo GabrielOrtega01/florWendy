@@ -87,9 +87,7 @@ hideturtle()
 done()
 
 getscreen().getcanvas().postscript(file="static/images/flor.ps")
-
 from PIL import Image
-
-# Convertir el archivo .ps a .png
 img = Image.open("static/images/flor.ps")
 img.save("static/images/flor.png", "png")
+
