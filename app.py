@@ -1,8 +1,9 @@
 """ florWendy/app.py """
-""" florWendy/app.py """
 from flask import Flask, render_template
 import os
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')  # Usar el backend Agg
 import matplotlib.pyplot as plt
 
 app = Flask(__name__)
@@ -49,4 +50,3 @@ def draw_flower():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port, debug=True)
-
