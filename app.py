@@ -1,7 +1,9 @@
-from flask import Flask, render_template
 import os
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')  # Establecer el backend antes de importar pyplot
 import matplotlib.pyplot as plt
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
