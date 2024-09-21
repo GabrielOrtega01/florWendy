@@ -8,64 +8,34 @@ from PIL import Image
 app = Flask(__name__)
 
 def draw_flower():
+    # Inicializar el canvas de Turtle
+    screen = Screen()
+    screen.setup(width=800, height=600)
+
     # Configuración de Turtle
-    speed(0)
-    bgcolor("black")
-    tracer(10)
-    penup()
-    goto(0, -40)
-    pendown()
+    t = Turtle()
+    t.speed(0)
+    t.bgcolor("black")
+    t.color('#FFA216')
 
-    # Dibuja las hojas
-    for i in range(12):
-        for j in range(12):
-            color('#FFA216')
-            right(90)
-            circle(150 - j * 6, 90)
-            left(90)
-            circle(150 - j * 6, 90)
-            right(180)
-        circle(40, 30)
-
-    # Centro de la flor
-    color('black')
-    shape('circle')
-    shapesize(0.5)
-    fillcolor('#8B4513')
-    golden_ang = 137.508
-    phi = golden_ang * (pi / 180)
-
-    for i in range(100):
-        r = 4 * sqrt(i)
-        theta = i * phi
-        x = r * cos(theta)
-        y = r * sin(theta)
-        penup()
-        goto(x, y)
-        setheading(i * golden_ang)
-        pendown()
-        stamp()
-
-    # Dibuja "TÚ"
-    draw_T(-27, -20)
-    draw_U(7, -20)
-
-    # Añadir mensaje personalizado
-    penup()
-    goto(0, -120)
-    pendown()
-    color("white")
-    write("Feliz Día del Amor y la Amistad Wendy", align="center", font=("Arial", 16, "normal"))
+    # Dibuja una flor simple
+    for _ in range(36):
+        t.circle(100)
+        t.right(10)
 
     # Capturar el canvas
-    canvas = getscreen().getcanvas()
+    canvas = screen.getcanvas()
     img = Image.frombytes('RGB', (canvas.winfo_width(), canvas.winfo_height()), canvas.postscript(colormode='color'))
 
-    # Guardar en un objeto BytesIO para enviarlo directamente
     img_io = io.BytesIO()
     img.save(img_io, 'PNG')
     img_io.seek(0)
+
+    t.hideturtle()
+    screen.bye()  # Cerrar la ventana de Turtle
+
     return img_io
+
 
 @app.route('/')
 def index():
