@@ -1,9 +1,6 @@
-""" florWendy/app.py """
 from flask import Flask, render_template
 import os
 import numpy as np
-import matplotlib
-matplotlib.use('Agg')  # Usar el backend Agg
 import matplotlib.pyplot as plt
 
 app = Flask(__name__)
@@ -13,10 +10,11 @@ def home():
     draw_flower()
     return render_template('index.html')
 
-def draw_flower():
-    # Asegúrate de que el directorio existe
-    os.makedirs('static/images', exist_ok=True)
+@app.route('/flower')
+def flower():
+    return render_template('flower.html')  # Crea un nuevo template para mostrar la flor
 
+def draw_flower():
     # Crear una figura
     plt.figure(figsize=(6, 6))
     ax = plt.subplot(111, projection='polar')
@@ -37,13 +35,8 @@ def draw_flower():
     ax.set_yticklabels([])
     ax.set_ylim(0, 1.5)
 
-    # Agregar texto
-    plt.text(0, -1.1, "Feliz Día del Amor y la Amistad Wendy", ha='center', fontsize=16, color='white')
-
-    # Llama a plt.draw() para preparar la figura
-    plt.draw()
-
     # Guardar la imagen
+    plt.text(0, -1.1, "Feliz Día del Amor y la Amistad Wendy", ha='center', fontsize=16, color='white')
     plt.savefig('static/images/flor.png', bbox_inches='tight', facecolor='black')
     plt.close()
 
