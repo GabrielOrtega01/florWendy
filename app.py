@@ -1,4 +1,5 @@
 """ florWendy/app.py """
+""" florWendy/app.py """
 from flask import Flask, render_template
 import os
 import numpy as np
@@ -12,6 +13,9 @@ def home():
     return render_template('index.html')
 
 def draw_flower():
+    # Asegúrate de que el directorio existe
+    os.makedirs('static/images', exist_ok=True)
+
     # Crear una figura
     plt.figure(figsize=(6, 6))
     ax = plt.subplot(111, projection='polar')
@@ -32,11 +36,17 @@ def draw_flower():
     ax.set_yticklabels([])
     ax.set_ylim(0, 1.5)
 
-    # Guardar la imagen
+    # Agregar texto
     plt.text(0, -1.1, "Feliz Día del Amor y la Amistad Wendy", ha='center', fontsize=16, color='white')
+
+    # Llama a plt.draw() para preparar la figura
+    plt.draw()
+
+    # Guardar la imagen
     plt.savefig('static/images/flor.png', bbox_inches='tight', facecolor='black')
     plt.close()
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port, debug=True)
+
