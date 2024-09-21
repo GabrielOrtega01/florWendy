@@ -1,22 +1,47 @@
-/* florWendy/static/css/styless.css */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.flower {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    transform: rotate(45deg);
+}
+
+.petal {
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    background-color: #FFA500; /* Color amarillo */
+    border-radius: 50px 50px 0 0;
+}
+
+.petal-1 { transform: rotate(0deg); top: 0; left: 50%; transform-origin: bottom; }
+.petal-2 { transform: rotate(60deg); top: 0; left: 50%; transform-origin: bottom; }
+.petal-3 { transform: rotate(120deg); top: 0; left: 50%; transform-origin: bottom; }
+.petal-4 { transform: rotate(180deg); top: 0; left: 50%; transform-origin: bottom; }
+.petal-5 { transform: rotate(240deg); top: 0; left: 50%; transform-origin: bottom; }
+.petal-6 { transform: rotate(300deg); top: 0; left: 50%; transform-origin: bottom; }
+
+.center {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: #8B4513; /* Color marrón para el centro */
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.message {
     text-align: center;
-    color: #333;
-}
-
-h1 {
-    color: #ff69b4;
-}
-
-#turtleCanvas {
-    border: 1px solid #333;
     margin-top: 20px;
-}
-
-img {
-    margin-top: 20px;
-    max-width: 100%;
-    height: auto;
 }
