@@ -1,0 +1,15 @@
+
+La estructura de es la siiguiente
+
+turtle-python-main
+├── resources
+│    └── tulipanes.docx
+├── 04.py
+├── README.md
+├── app.py
+└── requiremenst.txt
+     
+
+
+
+
