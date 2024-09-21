@@ -1,1 +1,3 @@
 Flask
+git commit -am "Forzando resincronización"
+git push origin main
